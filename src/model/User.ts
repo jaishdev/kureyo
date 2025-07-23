@@ -1,5 +1,4 @@
-import mongoose , {Schema , Document, mongo} from "mongoose";
-import { boolean } from "zod";
+import mongoose , {Schema , Document} from "mongoose";
 
 export interface Message extends Document{
     Content:string,
@@ -13,7 +12,7 @@ const MessageSchema:Schema<Message> = new Schema({
     CreatedAt:{
         type:Date,
         required:true,
-        dafault:Date.now
+        default:Date.now
     }
 })
 
@@ -67,3 +66,5 @@ const UserSchema : Schema<User> = new Schema({
 })
 
 const UserModel = (mongoose.models.User as mongoose.Model<User>) || (mongoose.model<User>('User', UserSchema)) ;
+
+export default UserModel
